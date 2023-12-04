@@ -7,30 +7,32 @@ jobs:
   github-script:
     runs-on: [ ubuntu-latest ]
     steps:
+
+      - run: echo ${{ toJSON(['one']) }}
       
-      - uses: actions/github-script@v6.4.0
-        with:
-          script: |
-            // Replace this URL with the public API endpoint you want to fetch from
-            const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+      # - uses: actions/github-script@v6.4.0
+      #   with:
+      #     script: |
+      #       // Replace this URL with the public API endpoint you want to fetch from
+      #       const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
 
-            // Make a GET request using fetch
-            fetch(apiUrl)
-              .then(response => {
-                // Check if the response status is OK (200)
-                if (!response.ok) {
-                  throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
-                }
+      #       // Make a GET request using fetch
+      #       fetch(apiUrl)
+      #         .then(response => {
+      #           // Check if the response status is OK (200)
+      #           if (!response.ok) {
+      #             throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+      #           }
 
-                // Parse the response as JSON
-                return response.json();
-              })
-              .then(data => {
-                // Handle the JSON data
-                console.log(data);
-                // You can now work with the data as needed
-              })
-              .catch(error => {
-                // Handle any errors that occurred during the fetch
-                console.error('Fetch error:', error);
-              });
+      #           // Parse the response as JSON
+      #           return response.json();
+      #         })
+      #         .then(data => {
+      #           // Handle the JSON data
+      #           console.log(data);
+      #           // You can now work with the data as needed
+      #         })
+      #         .catch(error => {
+      #           // Handle any errors that occurred during the fetch
+      #           console.error('Fetch error:', error);
+      #         });
