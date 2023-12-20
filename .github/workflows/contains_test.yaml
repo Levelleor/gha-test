@@ -1,0 +1,24 @@
+name: "Contains Test"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  github-script:
+    runs-on: [ ubuntu-latest ]
+    steps:
+
+      - if: ${{ contains(fromJSON('["development", "model_office"]'), 'development') }}
+        run: echo "Test 1"
+
+      - if: ${{ contains(fromJSON('["development", "model_office"]'), 'development:dev') }}
+        run: echo "Test 2"
+
+      - if: ${{ contains('development model_office'), 'development') }}
+        run: echo "Test 3"
+
+      - if: ${{ contains('development model_office'), '') }}
+        run: echo "Test 4"
+
+      - if: ${{ contains('development model_office'), 'development:dev') }}
+        run: echo "Test 5"
