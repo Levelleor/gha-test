@@ -14,11 +14,11 @@ jobs:
       - if: ${{ contains(fromJSON('["development", "model_office"]'), 'development:dev') }}
         run: echo "Test 2"
 
-      - if: ${{ contains('development model_office'), 'development') }}
+      - if: ${{ contains('development model_office', 'development') }}
         run: echo "Test 3"
 
-      - if: ${{ contains('development model_office'), '') }}
+      - if: ${{ contains('development model_office', '') }}
         run: echo "Test 4"
 
-      - if: ${{ contains('development model_office'), 'development:dev') }}
+      - if: ${{ contains('development model_office', 'development:dev') }}
         run: echo "Test 5"
